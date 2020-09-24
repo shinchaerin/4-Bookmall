@@ -16,12 +16,12 @@
         </thead>
         <tbody>
         {% for item in cart %}
-            {% with prodcut=item.product %}
+            {% with product=item.product %}
                 <tr>
-                    <td><a href="{{ product.get_absolute_url }}"><img src="{{ prodcut.image.url }}" alt=""></a></td>
-                    <td>{{ prodcut.name }}</td>
+                    <td><a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt=""></a></td>
+                    <td>{{ product.name }}</td>
                     <td>
-                        <form action="{% url 'cart:product_add' prodcut.id %}" method="post">
+                        <form action="{% url 'cart:product_add' product.id %}" method="post">
                             {% csrf_token %}
                             {{ item.quantity_form.quantity }}
                             {{ item.quantity_form.is_update }}

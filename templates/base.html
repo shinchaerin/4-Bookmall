@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Bookmall{% endblock %}</title>
-    </head>
-    <body>
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">로그아웃</a>
-        {% else %}
-            <a href="{% url 'login' %}">로그인</a>
-            <a href="{% url 'register' %}">회원가입</a>
-        {% endif %}
-        <a href="{% url 'cart:detail' %}">Cart
-            {% if cart|length > 0 %}
-                ${{ cart.get_product_total }} with {{ cart|length }} items
-            {% else %}
-                : Empty
-            {% endif %}
-        </a>
-        <p></p>
-        {% block content %}
-        {% endblock %}
-    </body>
-
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmall{% block title %}{% endblock %}</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+<a href="{% url 'logout' %}">로그아웃</a>
+{% else %}
+<a href="{% url 'login' %}">로그인</a>
+<a href="{% url 'register' %}">회원가입</a>
+{% endif %}
+<a href="{% url 'cart:detail' %}">Cart
+    {% if cart|length > 0 %}
+        ${{ cart.get_product_total }} with {{ cart|length }} items
+    {% else %}
+        : Empty
+    {% endif %}
+</a>
+<p></p>
+{% block content %}
+{% endblock %}
+</body>
 </html>

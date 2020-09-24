@@ -32,3 +32,9 @@ def detail(request):
     for product in cart:
         product['quantity_form'] = AddProductForm(initial={'quantity': product['quantity'], 'is_update': True})
     return render(request, 'cart/detail.html', {'cart': cart})
+
+def detail(request):
+    cart = Cart(request)
+    for product in cart:
+        product['quantity_form'] = AddProductForm(initial={'quantity': product['quantity'], 'is_update': True})
+    return render(request, 'cart/detail.html', {'cart': cart})
